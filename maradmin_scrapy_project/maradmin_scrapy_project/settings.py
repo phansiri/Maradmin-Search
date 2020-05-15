@@ -15,8 +15,8 @@ SPIDER_MODULES = ['maradmin_scrapy_project.spiders']
 NEWSPIDER_MODULE = 'maradmin_scrapy_project.spiders'
 
 # Export to CSV Feed
-FEED_FORMAT = "csv"
-FEED_URI = "../maradmin.csv"
+FEED_FORMAT = "json"
+FEED_URI = "../maradmin.json"
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'maradmin_scrapy_project (+http://www.yourdomain.com)'

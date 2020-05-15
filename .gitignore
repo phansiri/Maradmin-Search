@@ -4,7 +4,7 @@
 # User-specific stuff
 .idea
 myvenv
-maradmin.csv
+maradmin.json
 
 # CMake
 cmake-build-*/

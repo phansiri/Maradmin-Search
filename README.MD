@@ -2,17 +2,18 @@
 Below are the documentations on how to set it up from scratch. Then further below will be how to just clone it and run it.
 The website is `https://www.marines.mil/News/Messages/MARADMINS/`
 
-## Method
+## Methodology of building the application
 1. Scrapy
 1. Django API backend
 1. Celery Worker to automate the scraping and inserting new maradmin into the db
 1. React frontend
 
 ## VIRTUAL ENV
-`python -m venv myvenv`
-then activate the virutal environment. In windows utilizing bash `source myvenv/Scripts/activate`
-`python -m pip install --upgrade pip`
-`pip install Scrapy`
+1. `python -m venv myvenv`
+1. Activate the virutal environment. In windows utilizing bash `source myvenv/Scripts/activate`
+1. `python -m pip install --upgrade pip`
+### These are the packages installed. They will all role up into a requirements.txt later
+1. `pip install Scrapy`
 
 ## SCRAPY
 1. Create a new project `scrapy startproject maradmin_scrapy_project`
