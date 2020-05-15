@@ -37,7 +37,10 @@ The website is `https://www.marines.mil/News/Messages/MARADMINS/`
 3. Set up admin to for testing purpose only
    1. `python manage.py createsuperuser`
 4. Set up URL links from project to app
-5. 
+5. Create a bulk insert manager and run it with a django command
+6. `python manage.py maradmin_uploader`
+
+
 ### Django Rest Framework
 1. `pip install djangorestframework`
 2. `pip install django-filter`
@@ -46,6 +49,7 @@ The website is `https://www.marines.mil/News/Messages/MARADMINS/`
 5. Create serializer.py
 6. Create view to display serialized objects
 7. Update URL to view with simple Router
+
 
 
 
