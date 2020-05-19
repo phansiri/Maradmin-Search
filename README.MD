@@ -51,7 +51,14 @@ The website is `https://www.marines.mil/News/Messages/MARADMINS/`
 6. Create view to display serialized objects
 7. Update URL to view with simple Router
 
-### Celery Worker
+### Integrated Scrapy into Django
+1. `pip install scrapy-djangoitem`
+1. Moved `maradmin_scrapy_project` into same level as `search_api`
+1. Update `management/commands/maradmin_uploader.py`
+1. Update `maradmin_scrapy_project` files from adding `apps.py`, to the items, pipelines, and settings to integrate Django models
+1. Run `scrapy crawl maradminspider` inside the `maradmin_scrapy_project` to scrape and save into django database
+
+### Celery Worker - IW
 1. This is to automate the scraping and uploading into the database to ensure it is up-to-date
 2. `pip install celery` for the worker and `pip install redis` for the broker
 3. Create celery.py inside the backend/backend
@@ -77,3 +84,4 @@ The website is `https://www.marines.mil/News/Messages/MARADMINS/`
 1. [Scrapy](https://docs.scrapy.org/en/latest/index.html "Scrapy Documentation")
 1. [Django Girls](https://tutorial.djangogirls.org/en "Django Girls Tutorial")
 2. [Django Rest Framework](https://www.django-rest-framework.org/ "DRF Documentation")
+1. [Scraping with Scrapy and Django Integration](https://blog.theodo.com/2019/01/data-scraping-scrapy-django-integration/ 'Scrapy with Django')

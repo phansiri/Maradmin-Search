@@ -5,3 +5,4 @@ django-filter==2.2.0
 djangorestframework==3.11.0
 Markdown==3.2.2
 redis==3.5.2
+scrapy-djangoitem==1.1.1

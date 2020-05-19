@@ -6,9 +6,9 @@
 # https://docs.scrapy.org/en/latest/topics/items.html
 
 import scrapy
+from scrapy_djangoitem import DjangoItem
+from search_api.models import Maradmin
 
 
-class MaradminScrapyProjectItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+class MaradminScrapyProjectItem(DjangoItem):
+    django_model = Maradmin

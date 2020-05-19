@@ -9,14 +9,21 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
+import sys, os, django
+
+sys.path.append('../../backend')
+os.environ['DJANGO_SETTINGS_MODULE'] = 'backend.settings'
+django.setup()
+
+
 BOT_NAME = 'maradmin_scrapy_project'
 
 SPIDER_MODULES = ['maradmin_scrapy_project.spiders']
 NEWSPIDER_MODULE = 'maradmin_scrapy_project.spiders'
 
 # Export to CSV Feed
-FEED_FORMAT = "json"
-FEED_URI = "../maradmin.json"
+# FEED_FORMAT = "json"
+# FEED_URI = "../maradmin.json"
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'maradmin_scrapy_project (+http://www.yourdomain.com)'
@@ -67,9 +74,9 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'maradmin_scrapy_project.pipelines.MaradminScrapyProjectPipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'maradmin_scrapy_project.pipelines.MaradminScrapyProjectPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
