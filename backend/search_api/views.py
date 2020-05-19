@@ -6,5 +6,5 @@ from .models import Maradmin
 
 
 class MaradminViewSet(viewsets.ModelViewSet):
-    queryset = Maradmin.objects.all().order_by("-date")[:5]
+    queryset = Maradmin.objects.all().order_by("-date")[:25]
     serializer_class = MaradminSerializer
