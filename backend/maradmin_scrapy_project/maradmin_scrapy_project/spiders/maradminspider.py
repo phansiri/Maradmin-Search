@@ -6,9 +6,9 @@ from search_api.models import Maradmin
 class MaradminSpider(scrapy.Spider):
     name = "maradminspider"
     start_urls = ["https://www.marines.mil/News/Messages/MARADMINS.aspx/?Page=1"]
+    Maradmin.objects.all().delete()
 
     def parse(self, response):
-        Maradmin.objects.all().delete()
 
         for item in response.css("div.item"):
             print('scraping item inside maradminspider')
@@ -20,7 +20,7 @@ class MaradminSpider(scrapy.Spider):
             insert_item["status"] = item.css(".msg-status.msg-col::text").extract_first()
             yield insert_item
 
-        max_counter = 25
+        max_counter = 51
         for num in range(2, max_counter):
             next_page_url = (
                 f"https://www.marines.mil/News/Messages/MARADMINS.aspx/?Page={num}"
