@@ -50,6 +50,8 @@ The website is `https://www.marines.mil/News/Messages/MARADMINS/`
 5. Create serializer.py
 6. Create view to display serialized objects
 7. Update URL to view with simple Router
+#### Pagination and SearchFilter
+1. Update settings and view
 
 ### Integrated Scrapy into Django
 1. `pip install scrapy-djangoitem`
@@ -58,26 +60,26 @@ The website is `https://www.marines.mil/News/Messages/MARADMINS/`
 1. Update `maradmin_scrapy_project` files from adding `apps.py`, to the items, pipelines, and settings to integrate Django models
 1. Run `scrapy crawl maradminspider` inside the `maradmin_scrapy_project` to scrape and save into django database
 
-### Celery Worker - IW
+### Celery Worker - IW (PAUSE) - workaround is to establish a cron job later on to automate it. Twister error wins...
 1. This is to automate the scraping and uploading into the database to ensure it is up-to-date
 2. `pip install celery` for the worker and `pip install redis` for the broker
 3. Create celery.py inside the backend/backend
 4. Add celery settings at the bottom of settings
 5. Add celery to `backend/backend/__init__.py` to ensure it is loaded every time django starts up
 6. Create `tasks.py` and make simple task inside directory `search_api`
+1. `pip install crochet` - handle Twisted errors. See below reference stackoverflow on ReactorNotRestartable
+1. pause celery worker
 7. Install redis-server
     1. `sudo apt-get install redis-server`
     1. `sudo service redis-server restart`
 1. Run redis server on separate terminal
     1. `redis-server`
 1. Run celery worker on separate terminal
-    1. `celery worker -A backend --loglevel=info`
-1. Run Django Python shell and test out `adding_task`
-    1. `python manage.py shell`
-    1. `from search_api.tasks import adding_task`
-    1. `task = adding_task.delay(2,5)`
-    1. `print(f"id={task.id}, state={task.state}, status={task.status}")`
-    1. `task.get()`
+    1. `celery worker -A backend -l info`
+    1. test `celery beat -A backend -l info`
+
+
+
 
 
 ## References
@@ -85,3 +87,5 @@ The website is `https://www.marines.mil/News/Messages/MARADMINS/`
 1. [Django Girls](https://tutorial.djangogirls.org/en "Django Girls Tutorial")
 2. [Django Rest Framework](https://www.django-rest-framework.org/ "DRF Documentation")
 1. [Scraping with Scrapy and Django Integration](https://blog.theodo.com/2019/01/data-scraping-scrapy-django-integration/ 'Scrapy with Django')
+1. [Django Celery Scrapy Error ReactorNotRestartable](https://stackoverflow.com/questions/50140887/django-celery-scrappy-error-twisted-internet-error-reactornotrestartable "stackoverflow - reactornotrestartable")
+1. [Carbalert](https://github.com/dinofizz/carbalert/blob/master/carbalert/carbalert_scrapy/carbalert_scrapy/tasks.py "")
