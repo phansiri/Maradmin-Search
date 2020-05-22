@@ -1,5 +1,7 @@
 from celery import shared_task
-from maradmin_scrapy_project.maradmin_scrapy_project.spiders.maradminspider import MaradminSpider
+from maradmin_scrapy_project.maradmin_scrapy_project.spiders.maradminspider import (
+    MaradminSpider,
+)
 from scrapy.utils.project import get_project_settings
 from scrapy.crawler import CrawlerProcess, CrawlerRunner
 from twisted.internet import reactor
@@ -10,6 +12,7 @@ import scrapy
 @shared_task
 def scrape_maradmins():
     from crochet import setup
+
     setup()
     process = CrawlerRunner(get_project_settings())
     d = process.crawl(MaradminSpider)
@@ -34,7 +37,6 @@ def scrape_maradmins():
     #
     # if result is not None:
     #     raise result
-
 
     # Processor
     # process = CrawlerProcess(get_project_settings())

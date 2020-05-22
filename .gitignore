@@ -6,6 +6,7 @@
 myvenv
 mybash
 maradmin.json
+htmlcov/
 
 
 # Ignore redis binary dump (dump.rdb) files
