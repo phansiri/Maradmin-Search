@@ -53,7 +53,7 @@ class MaradminScrapyProjectSpiderMiddleware:
             yield r
 
     def spider_opened(self, spider):
-        spider.logger.info('Spider opened: %s' % spider.name)
+        spider.logger.info("Spider opened: %s" % spider.name)
 
 
 class MaradminScrapyProjectDownloaderMiddleware:
@@ -100,4 +100,4 @@ class MaradminScrapyProjectDownloaderMiddleware:
         pass
 
     def spider_opened(self, spider):
-        spider.logger.info('Spider opened: %s' % spider.name)
+        spider.logger.info("Spider opened: %s" % spider.name)

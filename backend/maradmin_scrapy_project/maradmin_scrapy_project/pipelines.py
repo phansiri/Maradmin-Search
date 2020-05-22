@@ -10,7 +10,7 @@ from datetime import datetime
 class MaradminScrapyProjectPipeline:
     def process_item(self, item, spider):
         print(f'saving item...title: {item["title"]}')
-        item['date'] = datetime.strptime(item['date'], '%m/%d/%Y').strftime("%Y-%m-%d")
+        item["date"] = datetime.strptime(item["date"], "%m/%d/%Y").strftime("%Y-%m-%d")
         item.save()
-        print('Save success')
+        print("Save success")
         return item

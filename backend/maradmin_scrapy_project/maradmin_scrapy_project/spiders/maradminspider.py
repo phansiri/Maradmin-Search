@@ -11,16 +11,23 @@ class MaradminSpider(scrapy.Spider):
     def parse(self, response):
 
         for item in response.css("div.item"):
-            print('scraping item inside maradminspider')
+            print("scraping item inside maradminspider")
             insert_item = MaradminScrapyProjectItem()
 
             insert_item["number"] = item.css(".msg-num.msg-col a::text").extract_first()
-            insert_item["title"] = item.css(".msg-title.msg-col a span::text").extract_first()
-            insert_item["date"] = item.css(".msg-pub-date.msg-col::text").extract_first()
-            insert_item["status"] = item.css(".msg-status.msg-col::text").extract_first()
+            insert_item["title"] = item.css(
+                ".msg-title.msg-col a span::text"
+            ).extract_first()
+            insert_item["date"] = item.css(
+                ".msg-pub-date.msg-col::text"
+            ).extract_first()
+            insert_item["status"] = item.css(
+                ".msg-status.msg-col::text"
+            ).extract_first()
             yield insert_item
 
-        max_counter = 51
+        # max_counter = 436
+        max_counter = 5
         for num in range(2, max_counter):
             next_page_url = (
                 f"https://www.marines.mil/News/Messages/MARADMINS.aspx/?Page={num}"

@@ -1,0 +1,17 @@
+[run]
+branch = True
+command_line = manage.py test
+source = .
+omit =
+    *wsgi.py
+    */migrations/*
+    */test/*
+    *manage.py
+    *settings.py
+    */apps.py
+    *__init__.py
+    */tasks.py
+    */maradmin_scrapy_project/*
+    */asgi.py
+    *bulkmanager.py
+    *maradmin_uploader.py

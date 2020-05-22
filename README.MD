@@ -60,6 +60,14 @@ The website is `https://www.marines.mil/News/Messages/MARADMINS/`
 1. Update `maradmin_scrapy_project` files from adding `apps.py`, to the items, pipelines, and settings to integrate Django models
 1. Run `scrapy crawl maradminspider` inside the `maradmin_scrapy_project` to scrape and save into django database
 
+### Testing
+1. `pip install coverage`
+1. made tests folder
+1. add `test_models` and `test_view`
+1. `coverage run`
+1. `coverage html`
+1. `coverage report`
+
 ### Celery Worker - IW (PAUSE) - workaround is to establish a cron job later on to automate it. Twister error wins...
 1. This is to automate the scraping and uploading into the database to ensure it is up-to-date
 2. `pip install celery` for the worker and `pip install redis` for the broker
