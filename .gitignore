@@ -7,6 +7,8 @@ myvenv
 mybash
 maradmin.json
 htmlcov/
+.mypy_cache/
+
 
 
 # Ignore redis binary dump (dump.rdb) files
@@ -209,3 +211,11 @@ db.sqlite3
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# binary file created by celery beat
+celerybeat-schedule
+celerybeat.pid
+
+# python coverage output
+.coverage
+
