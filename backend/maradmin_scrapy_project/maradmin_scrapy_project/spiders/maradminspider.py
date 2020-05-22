@@ -24,6 +24,9 @@ class MaradminSpider(scrapy.Spider):
             insert_item["status"] = item.css(
                 ".msg-status.msg-col::text"
             ).extract_first()
+            insert_item["body_link"] = item.css(
+                ".msg-title.msg-col a::attr(href)"
+            ).extract_first()
             yield insert_item
 
         # max_counter = 436
