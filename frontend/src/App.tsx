@@ -15,8 +15,8 @@ function App() {
         <div className="App">
             <Layout>
                 <HeaderTop/>
-                <Content className="site-layout" style={{ padding: '0 40px', marginTop: 32 }}>
-                    <div className="site-layout-background" style={{ padding: 24, minHeight: 580 }}>
+                <Content className="site-layout" style={{ marginTop: 16 }}>
+                    <div className="site-layout-background" style={{ padding: 12, minHeight: 580 }}>
                         <UsefulLinks/>
                         <MaradminList/>
                     </div>
