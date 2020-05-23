@@ -1,6 +1,8 @@
 import React from 'react';
 import { Table, Input, Button, Space} from "antd";
-import { SearchOutlined } from '@ant-design/icons';
+import { SearchOutlined, EyeTwoTone } from '@ant-design/icons';
+import { Breakpoint } from 'antd/lib/_util/responsiveObserve';
+
 
 
 const Highlighter = require('react-highlight-words');
@@ -118,28 +120,34 @@ class MaradminList extends React.Component {
                 ...this.getColumnSearchProps('number')
             },
             {
+                title: 'Link',
+                dataIndex: 'body_link',
+                key: 'body_link',
+                render: (text: string) => <a href={text} target='_blank'><EyeTwoTone /></a>,
+            },
+            {
                 title: 'Title',
                 dataIndex: 'title',
                 key: 'title',
                 ...this.getColumnSearchProps('title'),
+                // render: (text: React.ReactNode, record: { body_link: string | undefined; }) => <div>{text} <a href={record.body_link} target='_blank'>link</a></div>,
+
             },
             {
                 title: 'Date',
                 dataIndex: 'date',
                 key: 'date',
-                ...this.getColumnSearchProps('date')
+                ...this.getColumnSearchProps('date'),
+                responsive: ['lg'] as Breakpoint[],
+
             },
             {
                 title: 'Status',
                 dataIndex: 'status',
                 key: 'status',
+                responsive: ['lg'] as Breakpoint[],
             },
-            {
-                title: 'Link',
-                dataIndex: 'body_link',
-                key: 'body_link',
-                render: (text: string) => <a href={text} target='_blank'>{text}</a>
-            }
+
         ];
 
         return (
