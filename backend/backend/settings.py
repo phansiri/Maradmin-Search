@@ -41,10 +41,13 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "search_api.apps.SearchApiConfig",
     "rest_framework",
+    "corsheaders",
     "django_filters",
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -127,6 +130,11 @@ REST_FRAMEWORK = {
     "SEARCH_PARAM": "q",
 }
 
+
+# CORS_ORIGIN_WHITELIST = [
+#     'http://localhost:3000/'
+# ]
+CORS_ORIGIN_ALLOW_ALL = True
 
 # celery
 # CELERY_BROKER_URL = 'redis://localhost:6379'
