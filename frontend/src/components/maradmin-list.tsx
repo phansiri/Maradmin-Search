@@ -31,46 +31,101 @@ const dataSource = [
         "body_link": "http://www.marines.mil/News/Messages/Messages-Display/Article/2193869/convening-of-the-academic-year-2021-22-reserve-officer-professional-military-ed/"
     },
 ];
-const columns = [
-    {
-        title: 'Number',
-        dataIndex: 'number',
-        key: 'number',
-    },
-    {
-        title: 'Title',
-        dataIndex: 'title',
-        key: 'title',
-    },
-    {
-        title: 'Date',
-        dataIndex: 'date',
-        key: 'date',
-    },
-    {
-        title: 'Status',
-        dataIndex: 'status',
-        key: 'status',
-    },
-    {
-        title: 'Link',
-        dataIndex: 'body_link',
-        key: 'body_link',
-        render: (text: string) => <a href={text} target='_blank'>{text}</a>
-    }
-];
+
 
 
 class MaradminList extends React.Component {
+
+    private searchInput: any;
+
     state = {
         searchText: '',
         searchedColumn: '',
     };
 
+    getColumnSearchProps = (dataIndex: any) => ({
+        filterDropdown: (itemFilter: any) => (
+            <div style={{ padding: 8 }}>
+                <Input
+                    ref={node => {
+                        this.searchInput = node;
+                    }}
+                    placeholder={`Search ${dataIndex}`}
+                    value={(itemFilter.selectedKeys)[0]}
+                    onChange={e => itemFilter.setSelectedKeys(e.target.value ? [e.target.value] : [])}
+                    onPressEnter={() => this.handleSearch(itemFilter.selectedKeys, itemFilter.confirm, dataIndex)}
+                    style={{ width: 188, marginBottom: 8, display: 'block' }}
+                />
+            </div>
+        ),
+        filterIcon: (filtered: string) => <SearchOutlined style={{ color: filtered ? '#1890ff' : undefined }} />,
+        onFilter: (value: any, record: { [x: string]: any; }) =>
+            record[dataIndex] ? record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()) : false,
+        onFilterDropdownVisibleChange: (visible: boolean) => {
+            if (visible) {
+                setTimeout(() => this.searchInput.select());
+            }
+        },
+        render: (text: any) =>
+            this.state.searchedColumn === dataIndex ? (
+                <Highlighter
+                    highlightStyle={{ backgroundColor: '#ffc069', padding: 0 }}
+                    searchWords={[this.state.searchText]}
+                    autoEscape
+                    textToHighlight={text.toString()}
+                />
+            ) : (text),
+    });
+
+    handleSearch = (selectKeys: any[], confirm: () => void, dataIndex: any) => {
+        confirm();
+        this.setState({
+            searchText: selectKeys[0],
+            searchedColumn: dataIndex,
+        });
+    };
+
+    handleReset = (clearFilters: () => void) => {
+      clearFilters();
+      this.setState({ searchText: '' })
+    };
+
+
     render() {
+
+        const columns = [
+            {
+                title: 'Number',
+                dataIndex: 'number',
+                key: 'number',
+            },
+            {
+                title: 'Title',
+                dataIndex: 'title',
+                key: 'title',
+                ...this.getColumnSearchProps('title')
+            },
+            {
+                title: 'Date',
+                dataIndex: 'date',
+                key: 'date',
+            },
+            {
+                title: 'Status',
+                dataIndex: 'status',
+                key: 'status',
+            },
+            {
+                title: 'Link',
+                dataIndex: 'body_link',
+                key: 'body_link',
+                render: (text: string) => <a href={text} target='_blank'>{text}</a>
+            }
+        ];
+
         return (
             <div>
-                <Table dataSource={dataSource} columns={columns} />;
+                <Table dataSource={dataSource} columns={columns} />
             </div>
             )
     }
