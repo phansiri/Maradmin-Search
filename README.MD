@@ -23,7 +23,7 @@ The website is `https://www.marines.mil/News/Messages/MARADMINS/`
 1. Create a spider under spiders folder called maradminspider
   1. Trial 1: it scraps just the basic information and not the body - initial scrape is 50 pages
 1. Crawl utilizing the command `scrapy crawl maradminspider` inside the root director of `maradmin_scrapy_project`
-1. The csv will be placed in the destination whereever you designated in the settings of `maradmin_scrapy_project`
+1. The scraped data is inserted straight into the database via django model
 
 ## DJANGO
 1. `pip install django`
@@ -86,7 +86,10 @@ The website is `https://www.marines.mil/News/Messages/MARADMINS/`
     1. `celery worker -A backend -l info`
     1. test `celery beat -A backend -l info`
 
-
+### React
+1. `yarn create react-app frontend --template typescript`
+1. `yarn add antd`
+1. `yarn start`
 
 
 
@@ -96,4 +99,7 @@ The website is `https://www.marines.mil/News/Messages/MARADMINS/`
 2. [Django Rest Framework](https://www.django-rest-framework.org/ "DRF Documentation")
 1. [Scraping with Scrapy and Django Integration](https://blog.theodo.com/2019/01/data-scraping-scrapy-django-integration/ 'Scrapy with Django')
 1. [Django Celery Scrapy Error ReactorNotRestartable](https://stackoverflow.com/questions/50140887/django-celery-scrappy-error-twisted-internet-error-reactornotrestartable "stackoverflow - reactornotrestartable")
-1. [Carbalert](https://github.com/dinofizz/carbalert/blob/master/carbalert/carbalert_scrapy/carbalert_scrapy/tasks.py "")
+1. [Carbalert](https://github.com/dinofizz/carbalert/blob/master/carbalert/carbalert_scrapy/carbalert_scrapy/tasks.py "Django Scrapy Integration")
+1. [React Typescript Cheetsheet](https://blog.bitsrc.io/react-typescript-cheetsheet-2b6fa2cecfe2 "React Typescript cheetsheet")
+1. [Yarn](https://yarnpkg.com/ "Yarn Packages")
+
