@@ -56,6 +56,23 @@ class MaradminList extends React.Component {
                     onPressEnter={() => this.handleSearch(itemFilter.selectedKeys, itemFilter.confirm, dataIndex)}
                     style={{ width: 188, marginBottom: 8, display: 'block' }}
                 />
+                <Space>
+                    <Button
+                        type="primary"
+                        onClick={() => this.handleSearch(itemFilter.selectedKeys, itemFilter.confirm, dataIndex)}
+                        icon={<SearchOutlined />}
+                        size="small"
+                        style={{ width: 90 }}
+                    >
+                        Search
+                    </Button>
+                    <Button
+                        onClick={() => this.handleReset(itemFilter.clearFilters)}
+                        size="small"
+                        style={{ width: 90 }}>
+                        Reset
+                    </Button>
+                </Space>
             </div>
         ),
         filterIcon: (filtered: string) => <SearchOutlined style={{ color: filtered ? '#1890ff' : undefined }} />,
