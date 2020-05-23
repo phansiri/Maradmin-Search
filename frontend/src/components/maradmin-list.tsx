@@ -115,17 +115,19 @@ class MaradminList extends React.Component {
                 title: 'Number',
                 dataIndex: 'number',
                 key: 'number',
+                ...this.getColumnSearchProps('number')
             },
             {
                 title: 'Title',
                 dataIndex: 'title',
                 key: 'title',
-                ...this.getColumnSearchProps('title')
+                ...this.getColumnSearchProps('title'),
             },
             {
                 title: 'Date',
                 dataIndex: 'date',
                 key: 'date',
+                ...this.getColumnSearchProps('date')
             },
             {
                 title: 'Status',
@@ -142,6 +144,7 @@ class MaradminList extends React.Component {
 
         return (
             <div>
+                <h2>Marine Administration</h2>
                 <Table dataSource={dataSource} columns={columns} />
             </div>
             )
