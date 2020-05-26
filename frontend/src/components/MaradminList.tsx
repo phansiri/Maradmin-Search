@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Table, Input, Button, Space} from "antd";
 import { SearchOutlined, EyeTwoTone } from '@ant-design/icons';
 import { Breakpoint } from 'antd/lib/_util/responsiveObserve';
@@ -7,43 +7,76 @@ import { Breakpoint } from 'antd/lib/_util/responsiveObserve';
 
 const Highlighter = require('react-highlight-words');
 
-const dataSource = [
-    {
-        "id": 1,
-        "number": "302/20",
-        "title": "MANPOWER FORCE SHAPING IN SUPPORT OF FORCE DESIGN PHASE ONE",
-        "date": "2020-05-21",
-        "status": "Active",
-        "body_link": "http://www.marines.mil/News/Messages/Messages-Display/Article/2193900/manpower-force-shaping-in-support-of-force-design-phase-one/"
-    },
-    {
-        "id": 2,
-        "number": "301/20",
-        "title": "JUNE 2020 REGULAR CORPORAL AND SERGEANT PROMOTION AUTHORITY",
-        "date": "2020-05-21",
-        "status": "Active",
-        "body_link": "http://www.marines.mil/News/Messages/Messages-Display/Article/2193885/june-2020-regular-corporal-and-sergeant-promotion-authority/"
-    },
-    {
-        "id": 3,
-        "number": "300/20",
-        "title": "CONVENING OF THE ACADEMIC YEAR 2021-22 RESERVE OFFICER PROFESSIONAL MILITARY EDUCATION BOARD",
-        "date": "2020-05-21",
-        "status": "Active",
-        "body_link": "http://www.marines.mil/News/Messages/Messages-Display/Article/2193869/convening-of-the-academic-year-2021-22-reserve-officer-professional-military-ed/"
-    },
-];
+
+// const dataSource = [
+//     {
+//         "count": 108,
+//         "next": "http://127.0.0.1:8000/api/?limit=100&offset=100",
+//         "previous": null,
+//         "results": [
+//             {
+//                 "id": 13965,
+//                 "number": "302/20",
+//                 "title": "MANPOWER FORCE SHAPING IN SUPPORT OF FORCE DESIGN PHASE ONE",
+//                 "date": "2020-05-21",
+//                 "status": "Active"
+//             },
+//             {
+//                 "id": 13966,
+//                 "number": "301/20",
+//                 "title": "JUNE 2020 REGULAR CORPORAL AND SERGEANT PROMOTION AUTHORITY",
+//                 "date": "2020-05-21",
+//                 "status": "Active"
+//             },
+//             {
+//                 "id": 13967,
+//                 "number": "300/20",
+//                 "title": "CONVENING OF THE ACADEMIC YEAR 2021-22 RESERVE OFFICER PROFESSIONAL MILITARY EDUCATION BOARD",
+//                 "date": "2020-05-21",
+//                 "status": "Active"
+//             },
+//         ]
+//     }];
 
 
 
-class MaradminList extends React.Component {
+class MaradminList extends Component {
 
     private searchInput: any;
+
 
     state = {
         searchText: '',
         searchedColumn: '',
+        backendSource: [],
     };
+
+    async componentDidMount() {
+        try {
+            const res = await fetch('http://127.0.0.1:8000/api/'); // fetching the data from api, before the page loaded
+            const data = await res.json();
+            this.setState({
+                backendSource: data
+            });
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    // render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
+    //     return (
+    //         <div>
+    //             <h1>Start of api...stuff</h1>
+    //             {console.log(this.state.backendSource)}
+    //             {this.state.backendSource.map((item: any) => (
+    //                 <div key={item.id}>
+    //                     {item.title}
+    //                 </div>
+    //             ))}
+    //         </div>
+    //     )
+    // }
+
 
     getColumnSearchProps = (dataIndex: any) => ({
         filterDropdown: (itemFilter: any) => (
@@ -123,7 +156,7 @@ class MaradminList extends React.Component {
                 title: 'Link',
                 dataIndex: 'body_link',
                 key: 'body_link',
-                render: (text: string) => <a href={text} target='_blank'><EyeTwoTone /></a>,
+                render: (text: string) => <a href={text} target='_blank' rel="noopener noreferrer"><EyeTwoTone /></a>,
             },
             {
                 title: 'Title',
@@ -153,11 +186,10 @@ class MaradminList extends React.Component {
         return (
             <div>
                 <h2>Marine Administration</h2>
-                <Table dataSource={dataSource} columns={columns} />
+                <Table dataSource={this.state.backendSource} columns={columns} />
             </div>
             )
     }
-
 
 }
 
