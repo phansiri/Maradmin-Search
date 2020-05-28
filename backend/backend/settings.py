@@ -124,8 +124,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 # Pagination
 REST_FRAMEWORK = {
-    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
-    "PAGE_SIZE": 100,
+    # "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
+    # "PAGE_SIZE": 100,
     "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
     "SEARCH_PARAM": "q",
 }
@@ -162,5 +162,5 @@ CACHES = {
 }
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 SESSION_CACHE_ALIAS = "default"
-CACHE_TTL = 60 * 1
+# CACHE_TTL = 60 * 1
 

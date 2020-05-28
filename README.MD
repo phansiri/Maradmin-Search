@@ -91,6 +91,11 @@ The website is `https://www.marines.mil/News/Messages/MARADMINS/`
 1. `yarn add antd`
 1. `yarn start`
 
+### Redis
+1. `redis-server`
+1. `redis-cli`
+1. `pip install django-redis`
+1. `redis-cli monitor`
 
 
 ## References
@@ -100,6 +105,6 @@ The website is `https://www.marines.mil/News/Messages/MARADMINS/`
 1. [Scraping with Scrapy and Django Integration](https://blog.theodo.com/2019/01/data-scraping-scrapy-django-integration/ 'Scrapy with Django')
 1. [Django Celery Scrapy Error ReactorNotRestartable](https://stackoverflow.com/questions/50140887/django-celery-scrappy-error-twisted-internet-error-reactornotrestartable "stackoverflow - reactornotrestartable")
 1. [Carbalert](https://github.com/dinofizz/carbalert/blob/master/carbalert/carbalert_scrapy/carbalert_scrapy/tasks.py "Django Scrapy Integration")
-1. [React Typescript Cheetsheet](https://blog.bitsrc.io/react-typescript-cheetsheet-2b6fa2cecfe2 "React Typescript cheetsheet")
+1. [React Typescript Cheetsheet](https://blog.bitsrc.io/react-typescript-cheetsheet-2b6fa2cecfe2 "React Typescript cheat sheet")
 1. [Yarn](https://yarnpkg.com/ "Yarn Packages")
-
+1. [Redis](https://tute.io/how-to-cache-django-rest-framework-with-redis "Redis connection to django")
