@@ -56,7 +56,8 @@ class MaradminList extends Component {
             const res = await fetch('http://127.0.0.1:8000/api/'); // fetching the data from api, before the page loaded
             const data = await res.json();
             this.setState({
-                backendSource: data.results
+                // backendSource: data.results
+                backendSource: data
             });
         } catch (e) {
             console.log(e);
