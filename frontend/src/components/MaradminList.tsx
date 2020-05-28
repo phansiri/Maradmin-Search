@@ -56,7 +56,7 @@ class MaradminList extends Component {
             const res = await fetch('http://127.0.0.1:8000/api/'); // fetching the data from api, before the page loaded
             const data = await res.json();
             this.setState({
-                backendSource: data
+                backendSource: data.results
             });
         } catch (e) {
             console.log(e);
@@ -149,19 +149,19 @@ class MaradminList extends Component {
             {
                 title: 'Number',
                 dataIndex: 'number',
-                key: 'number',
+                key: 'id',
                 ...this.getColumnSearchProps('number')
             },
             {
                 title: 'Link',
                 dataIndex: 'body_link',
-                key: 'body_link',
+                key: 'id',
                 render: (text: string) => <a href={text} target='_blank' rel="noopener noreferrer"><EyeTwoTone /></a>,
             },
             {
                 title: 'Title',
                 dataIndex: 'title',
-                key: 'title',
+                key: 'id',
                 ...this.getColumnSearchProps('title'),
                 // render: (text: React.ReactNode, record: { body_link: string | undefined; }) => <div>{text} <a href={record.body_link} target='_blank'>link</a></div>,
 
@@ -169,7 +169,7 @@ class MaradminList extends Component {
             {
                 title: 'Date',
                 dataIndex: 'date',
-                key: 'date',
+                key: 'id',
                 ...this.getColumnSearchProps('date'),
                 responsive: ['lg'] as Breakpoint[],
 
@@ -177,7 +177,7 @@ class MaradminList extends Component {
             {
                 title: 'Status',
                 dataIndex: 'status',
-                key: 'status',
+                key: 'id',
                 responsive: ['lg'] as Breakpoint[],
             },
 

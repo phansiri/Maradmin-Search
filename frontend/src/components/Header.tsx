@@ -8,7 +8,7 @@ function HeaderTop() {
     return (
         <div>
             <Header className='header'>
-                <Title level={2}>Maradmin Search</Title>
+                <Title level={2}><a href="/">Maradmin Search</a></Title>
             </Header>
         </div>
     )
