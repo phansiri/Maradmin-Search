@@ -29,8 +29,8 @@ class MaradminSpider(scrapy.Spider):
             ).extract_first()
             yield insert_item
 
-        # max_counter = 436
-        max_counter = 5
+        max_counter = 436
+        # max_counter = 5
         for num in range(2, max_counter):
             next_page_url = (
                 f"https://www.marines.mil/News/Messages/MARADMINS.aspx/?Page={num}"
