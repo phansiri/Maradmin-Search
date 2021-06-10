@@ -1,7 +1,7 @@
 Scrapy==2.1.0
 black==19.10b0
 celery==4.4.2
-Django==3.0.14
+Django==3.1.12
 django-filter==2.2.0
 djangorestframework==3.11.2
 coverage==5.1
