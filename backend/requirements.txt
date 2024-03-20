@@ -1,5 +1,5 @@
 Scrapy==2.6.2
-black==19.10b0
+black==24.3.0
 celery==5.2.2
 Django==3.1.14
 django-filter==2.4.0
