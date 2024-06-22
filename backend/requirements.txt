@@ -1,4 +1,4 @@
-Scrapy==2.11.1
+Scrapy==2.11.2
 black==24.3.0
 celery==5.2.2
 Django==3.2.24
